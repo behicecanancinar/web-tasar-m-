@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: black; /* Arka plan siyah */
+        }
+        .gallery {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .gallery img {
+            width: 80vw; /* Görseller ekran genişliğinin %80'ini kaplar */
+            height: 80vh; /* Görseller ekran yüksekliğinin %80'ini kaplar */
+            object-fit: contain; /* Görseller bozulmadan küçültülür */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .gallery img.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <img src="basketbol-saha-yapimi.jpg" alt="Basketbol Sahası" class="active">
+        <img src="61e3ecf185c631b4d769b83fffc06256.jpg" alt="Saha Görseli">
+        <img src="futbol-sahasi-olculeri.jpg" alt="Futbol Sahası Ölçüleri">
+        <img src="1-1.jpg" alt="Kapalı Spor Salonu">
+        <img src="voleybol-sahasi-olcusu-1.webp" alt="Voleybol Sahası Ölçüsü">
+        <img src="jimnastik-salonlari-icin-aydinlatma.webp" alt="Jimnastik Salonu Aydınlatma">
+    </div>
+    <script>
+        const images = document.querySelectorAll('.gallery img');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextImage, 2000); // Her 2 saniyede bir geçiş yapar
+    </script>
+</body>
+</html>
